@@ -58,10 +58,10 @@ export default function Header() {
             {!loading && !user && (
               <>
                 <Button variant="ghost" asChild>
-                    <Link href="#">Login</Link>
+                    <Link href="/login">Login</Link>
                 </Button>
                 <Button asChild>
-                    <Link href="#">Register</Link>
+                    <Link href="/register">Register</Link>
                 </Button>
               </>
             )}
@@ -104,7 +104,7 @@ export default function Header() {
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                     <Link href="#">Log out</Link>
+                     <Link href="/logout">Log out</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -153,16 +153,16 @@ export default function Header() {
                   {!user && (
                     <>
                       <Button variant="outline" asChild>
-                          <Link href="#">Login</Link>
+                          <Link href="/login">Login</Link>
                       </Button>
                       <Button asChild>
-                          <Link href="#">Register</Link>
+                          <Link href="/register">Register</Link>
                       </Button>
                     </>
                   )}
                    {user && (
                       <Button variant="outline" asChild>
-                        <Link href="#">Log Out</Link>
+                        <Link href="/logout">Log Out</Link>
                     </Button>
                    )}
                 </div>

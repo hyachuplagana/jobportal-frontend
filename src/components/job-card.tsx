@@ -23,15 +23,17 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
       <Card className="hover:border-primary/50 transition-all duration-300 w-full flex flex-col sm:flex-row group bg-card">
         <div className="p-6 flex items-center justify-center sm:border-r">
           {logo && (
-            <div className="w-16 h-16 relative">
-              <Image
-                src={logo.imageUrl}
-                alt={`${job.company} logo`}
-                fill
-                className="rounded-lg object-contain"
-                data-ai-hint={logo.imageHint}
-              />
-            </div>
+             <Link href={`/company/${job.logoId}`}>
+                <div className="w-16 h-16 relative">
+                <Image
+                    src={logo.imageUrl}
+                    alt={`${job.company} logo`}
+                    fill
+                    className="rounded-lg object-contain"
+                    data-ai-hint={logo.imageHint}
+                />
+                </div>
+            </Link>
           )}
         </div>
         <div className="flex-grow">
@@ -41,7 +43,7 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
             </CardTitle>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Building className="h-4 w-4" />
-              <span>{job.company}</span>
+               <Link href={`/company/${job.logoId}`} className="hover:text-primary">{job.company}</Link>
             </div>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
@@ -89,7 +91,7 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
             <CardTitle className="text-lg mb-1 group-hover:text-primary transition-colors">{job.title}</CardTitle>
          </Link>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <span>{job.company}</span>
+           <Link href={`/company/${job.logoId}`} className="hover:text-primary">{job.company}</Link>
         </div>
       </CardHeader>
       <CardContent className="space-y-2 text-sm flex-grow">

@@ -7,7 +7,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Briefcase, Clock, Building, ArrowLeft, ArrowRight } from 'lucide-react';
+import { MapPin, Briefcase, Clock, Building, ArrowLeft, ArrowRight, User } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
 export default function JobDetailsPage({ params }: { params: { id: string } }) {
@@ -19,6 +19,9 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
 
   const logo = PlaceHolderImages.find((img) => img.id === job.logoId);
   const timeAgo = formatDistanceToNow(new Date(job.postedDate), { addSuffix: true });
+
+  // In a real app, you'd fetch the hirer's data
+  const hirer = { id: '1', name: 'Recruiter Roxy' };
 
   return (
     <div className="bg-secondary/50 py-12 md:py-20">
@@ -81,6 +84,10 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
                             <MapPin className="h-5 w-5" />
                             <span>{job.location}</span>
                         </div>
+                         <div className="flex items-center gap-2 text-muted-foreground">
+                           <User className="h-5 w-5" />
+                           Posted by <Link href={`/profile/${job.hirerId}`} className="text-primary hover:underline">{hirer.name}</Link>
+                        </div>
                         <div className="text-lg font-bold text-primary">{job.salary}</div>
                         <div className="flex items-center text-xs text-muted-foreground gap-1">
                             <Clock className="h-4 w-4" />
@@ -98,4 +105,3 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
