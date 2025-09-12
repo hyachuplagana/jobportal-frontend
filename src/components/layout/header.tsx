@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Briefcase } from 'lucide-react';
+import { Menu, Briefcase, ChevronDown, ArrowRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
@@ -19,8 +19,9 @@ import { useAuth } from '@/hooks/use-auth';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const navLinks = [
-  { href: '/jobs', label: 'Find Jobs' },
-  { href: '/hirer', label: 'For Hirers' },
+  { href: '/jobs', label: 'Jobs' },
+  { href: '#', label: 'Companies' },
+  { href: '#', label: 'Services' },
 ];
 
 export default function Header() {
@@ -31,39 +32,31 @@ export default function Header() {
   return (
     <header className="bg-background/80 backdrop-blur-lg sticky top-0 z-40 w-full border-b">
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold font-headline text-lg">
-          <Briefcase className="h-6 w-6 text-primary" />
-          <span>WorkWise</span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                'transition-colors hover:text-primary',
-                pathname === href ? 'text-primary' : 'text-muted-foreground'
-              )}
-            >
-              {label}
-            </Link>
-          ))}
-           {user && (
-             <Link
-              href="/dashboard"
-              className={cn(
-                'transition-colors hover:text-primary',
-                pathname === '/dashboard' ? 'text-primary' : 'text-muted-foreground'
-              )}
-            >
-              Dashboard
-            </Link>
-           )}
-        </nav>
+        <div className="flex items-center gap-8">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+            <Briefcase className="h-6 w-6 text-primary" />
+            <span className="font-bold text-2xl tracking-tighter">WorkWise</span>
+          </Link>
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  'transition-colors hover:text-primary flex items-center gap-1',
+                  pathname === href ? 'text-primary font-semibold' : 'text-muted-foreground'
+                )}
+              >
+                {label}
+                {label !== 'Jobs' && <ChevronDown className="h-4 w-4" />}
+              </Link>
+            ))}
+          </nav>
+        </div>
         <div className="hidden md:flex items-center gap-2">
             {!loading && !user && (
               <>
-                <Button variant="ghost" asChild>
+                <Button variant="outline" asChild>
                     <Link href="#">Login</Link>
                 </Button>
                 <Button asChild>
@@ -71,6 +64,10 @@ export default function Header() {
                 </Button>
               </>
             )}
+             <div className="h-8 w-px bg-border mx-2"></div>
+             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
+                <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
             {!loading && user && userImage && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -119,9 +116,9 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col gap-6 pt-10">
-                <Link href="/" className="flex items-center gap-2 font-bold font-headline text-lg">
+                <Link href="/" className="flex items-center gap-2 font-bold text-lg">
                   <Briefcase className="h-6 w-6 text-primary" />
-                  <span>WorkWise</span>
+                   <span className="font-bold text-2xl tracking-tighter">WorkWise</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
                   {navLinks.map(({ href, label }) => (
