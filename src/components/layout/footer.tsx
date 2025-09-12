@@ -3,17 +3,17 @@ import { Briefcase, Twitter, Linkedin, Github, Facebook, Instagram } from "lucid
 import { Button } from "../ui/button";
 
 const footerLinks = {
-    "About us": "#",
-    "Contact us": "#",
-    "Careers": "#",
-    "Press": "#",
+    "About us": "/about",
+    "Contact us": "/contact",
+    "Careers": "/careers",
+    "Press": "/press",
 }
 
 const helpLinks = {
-    "Help center": "#",
-    "Report issue": "#",
-    "Terms & conditions": "#",
-    "Privacy policy": "#",
+    "Help center": "/help",
+    "Report issue": "/report",
+    "Terms & conditions": "/terms",
+    "Privacy policy": "/privacy",
 }
 
 export default function Footer() {

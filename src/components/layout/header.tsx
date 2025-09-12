@@ -20,8 +20,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const navLinks = [
   { href: '/jobs', label: 'Jobs' },
-  { href: '#', label: 'Companies' },
-  { href: '#', label: 'Services' },
+  { href: '/companies', label: 'Companies' },
+  { href: '/services', label: 'Services' },
 ];
 
 export default function Header() {
