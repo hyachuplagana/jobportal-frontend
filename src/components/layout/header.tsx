@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Briefcase } from 'lucide-react';
+import { Menu, Briefcase, LogIn } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
@@ -37,6 +37,14 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+        <div className="hidden md:flex items-center gap-2">
+            <Button variant="ghost" asChild>
+                <Link href="#">Login</Link>
+            </Button>
+            <Button asChild>
+                <Link href="#">Register</Link>
+            </Button>
+        </div>
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
@@ -65,6 +73,14 @@ export default function Header() {
                     </Link>
                   ))}
                 </nav>
+                <div className="flex flex-col gap-4 mt-4">
+                    <Button variant="outline" asChild>
+                        <Link href="#">Login</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href="#">Register</Link>
+                    </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

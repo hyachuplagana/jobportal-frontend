@@ -5,7 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import JobCard from '@/components/job-card';
 import { MOCK_JOBS } from '@/lib/mock-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Briefcase, Building, Users } from 'lucide-react';
+import { Briefcase, Building, Users, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 export default function Home() {
   const featuredJobs = MOCK_JOBS.slice(0, 3);
@@ -22,9 +23,28 @@ export default function Home() {
             WorkWise connects you with top companies and exciting opportunities.
             Your next career move is just a click away.
           </p>
-          <div className="flex justify-center">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform transform hover:scale-105">
-              <Link href="/jobs">Browse All Jobs</Link>
+          <div className="mt-8 max-w-4xl mx-auto">
+            <Card className="shadow-lg">
+              <CardContent className="p-4 flex flex-col md:flex-row gap-2 items-center">
+                <div className="relative flex-1 w-full">
+                  <Input type="text" placeholder="Skills" className="pl-4 pr-4 py-3 text-base" />
+                </div>
+                <div className="relative flex-1 w-full">
+                  <Input type="text" placeholder="Companies | Experience" className="pl-4 pr-4 py-3 text-base" />
+                </div>
+                <div className="relative flex-1 w-full">
+                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base" />
+                </div>
+                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Search className="h-5 w-5 mr-2" />
+                  Search
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="flex justify-center mt-8">
+            <Button asChild size="lg" variant="ghost" className="text-primary-foreground/80 hover:text-primary-foreground">
+              <Link href="/jobs">or Browse All Jobs &rarr;</Link>
             </Button>
           </div>
         </div>
