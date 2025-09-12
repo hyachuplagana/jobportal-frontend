@@ -1,3 +1,89 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import JobCard from '@/components/job-card';
+import { MOCK_JOBS } from '@/lib/mock-data';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Briefcase, Building, Users } from 'lucide-react';
+
 export default function Home() {
-  return <></>;
+  const featuredJobs = MOCK_JOBS.slice(0, 3);
+  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-job-seeker');
+
+  return (
+    <div className="flex flex-col items-center">
+      <section className="w-full py-20 lg:py-32 gradient-hero text-primary-foreground">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-4">
+            Find Your Dream Job Today
+          </h1>
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-primary-foreground/80 mb-8">
+            WorkWise connects you with top companies and exciting opportunities.
+            Your next career move is just a click away.
+          </p>
+          <div className="flex justify-center">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform transform hover:scale-105">
+              <Link href="/jobs">Browse All Jobs</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      <section className="w-full py-16 lg:py-24 bg-background">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
+          <h2 className="text-3xl font-bold text-center mb-12 font-headline">Featured Jobs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredJobs.map((job) => (
+              <JobCard key={job.id} job={job} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-16 lg:py-24 bg-secondary">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
+            <h2 className="text-3xl font-bold text-center mb-12 font-headline">Why Choose WorkWise?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <Card className="hover:shadow-xl transition-shadow duration-300">
+                    <CardHeader>
+                        <div className="mx-auto bg-accent text-accent-foreground rounded-full p-3 w-fit mb-4">
+                            <Briefcase className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="font-headline">Curated Opportunities</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">Access a wide range of jobs from leading companies, hand-picked for you.</p>
+                    </CardContent>
+                </Card>
+                <Card className="hover:shadow-xl transition-shadow duration-300">
+                    <CardHeader>
+                        <div className="mx-auto bg-accent text-accent-foreground rounded-full p-3 w-fit mb-4">
+                            <Users className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="font-headline">Streamlined Applications</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">Apply for jobs quickly and easily with our one-click application process.</p>
+                    </CardContent>
+                </Card>
+                <Card className="hover:shadow-xl transition-shadow duration-300">
+                    <CardHeader>
+                        <div className="mx-auto bg-accent text-accent-foreground rounded-full p-3 w-fit mb-4">
+                            <Building className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="font-headline">For Hirers</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">Looking to hire top talent? Post a job and find the perfect candidate.</p>
+                        <Button asChild variant="link" className="mt-4 text-accent-foreground">
+                            <Link href="/hirer">Post a Job &rarr;</Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+      </section>
+    </div>
+  );
 }

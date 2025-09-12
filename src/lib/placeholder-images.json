@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-job-seeker",
+      "description": "A group of diverse professionals collaborating in a modern office.",
+      "imageUrl": "https://picsum.photos/seed/1/1200/800",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "hero-hirer",
+      "description": "A manager interviewing a candidate in a bright, professional setting.",
+      "imageUrl": "https://picsum.photos/seed/2/1200/800",
+      "imageHint": "job interview"
+    },
+    {
+      "id": "logo-tech-solutions",
+      "description": "Logo for Tech Solutions Inc.",
+      "imageUrl": "https://picsum.photos/seed/101/100/100",
+      "imageHint": "tech logo"
+    },
+    {
+      "id": "logo-innovate-now",
+      "description": "Logo for Innovate Now.",
+      "imageUrl": "https://picsum.photos/seed/102/100/100",
+      "imageHint": "creative logo"
+    },
+    {
+      "id": "logo-data-corp",
+      "description": "Logo for DataCorp.",
+      "imageUrl": "https://picsum.photos/seed/103/100/100",
+      "imageHint": "corporate logo"
+    },
+    {
+      "id": "logo-green-energy",
+      "description": "Logo for GreenEnergy Co.",
+      "imageUrl": "https://picsum.photos/seed/104/100/100",
+      "imageHint": "eco logo"
+    },
+    {
+      "id": "logo-health-plus",
+      "description": "Logo for HealthPlus.",
+      "imageUrl": "https://picsum.photos/seed/105/100/100",
+      "imageHint": "medical logo"
+    },
+    {
+      "id": "logo-finance-gurus",
+      "description": "Logo for Finance Gurus.",
+      "imageUrl": "https://picsum.photos/seed/106/100/100",
+      "imageHint": "finance logo"
+    }
+  ]
 }
