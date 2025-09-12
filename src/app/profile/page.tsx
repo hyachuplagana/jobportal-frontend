@@ -4,11 +4,6 @@
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Edit, Mail, Briefcase, Building, Link as LinkIcon, User as UserIcon, FileText } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -23,7 +18,7 @@ export default function ProfilePage() {
   }, [user, loading, router]);
 
 
-  if (loading || !user) {
+  if (loading) {
     return (
       <div className="container mx-auto max-w-7xl px-4 md:px-6 py-8 text-center">
         <p>Loading profile...</p>

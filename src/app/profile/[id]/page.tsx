@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Edit, Mail, Briefcase, Building, Link as LinkIcon, User as UserIcon, FileText } from 'lucide-react';
+import { Edit, Mail, Briefcase, Building, Link as LinkIcon, FileText } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useParams } from 'next/navigation';
 
