@@ -19,6 +19,42 @@
       "imageHint": "person avatar"
     },
     {
+      "id": "user-avatar-1",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/201/100/100",
+      "imageHint": "person avatar"
+    },
+    {
+      "id": "user-avatar-2",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/202/100/100",
+      "imageHint": "person avatar"
+    },
+    {
+      "id": "user-avatar-3",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/203/100/100",
+      "imageHint": "person avatar"
+    },
+    {
+      "id": "user-avatar-4",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/204/100/100",
+      "imageHint": "person avatar"
+    },
+    {
+      "id": "user-avatar-5",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/205/100/100",
+      "imageHint": "person avatar"
+    },
+    {
+      "id": "user-avatar-6",
+      "description": "Placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/206/100/100",
+      "imageHint": "person avatar"
+    },
+    {
       "id": "logo-tech-solutions",
       "description": "Logo for Tech Solutions Inc.",
       "imageUrl": "https://picsum.photos/seed/101/100/100",

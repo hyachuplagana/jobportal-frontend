@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -15,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Trash2, Users, Edit, PlusCircle } from 'lucide-react';
+import { Trash2, Users, Edit, PlusCircle, ExternalLink } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,6 +29,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { useToast } from '@/hooks/use-toast';
+import Link from 'next/link';
 
 const jobFormSchema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters.'),
@@ -104,21 +106,24 @@ export default function HirerDashboard() {
                       <Badge variant={job.status === 'Open' ? 'default' : 'secondary'}>{job.status}</Badge>
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
-                      <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-muted-foreground" />
+                       <Link href={`/dashboard/jobs/${job.id}`} className="flex items-center gap-2 text-primary hover:underline">
+                        <Users className="h-4 w-4" />
                         {job.applicants}
-                      </div>
+                      </Link>
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
-                         <Button variant="ghost" size="icon" disabled>
-                          <Edit className="h-4 w-4" />
-                          <span className="sr-only">Edit</span>
+                         <Button variant="ghost" size="icon" asChild>
+                           <Link href={`/jobs/${job.id}`} target="_blank">
+                              <ExternalLink className="h-4 w-4" />
+                              <span className="sr-only">View Job</span>
+                            </Link>
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
                             <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
                               <Trash2 className="h-4 w-4" />
+                               <span className="sr-only">Delete</span>
                             </Button>
                           </AlertDialogTrigger>
                           <AlertDialogContent>

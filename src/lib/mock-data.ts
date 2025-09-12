@@ -21,6 +21,17 @@ export type Company = {
     logoId: string;
 }
 
+export type Applicant = {
+  id: string;
+  name: string;
+  email: string;
+  avatarId: string;
+  jobId: string;
+  applicationDate: string;
+  skills: string[];
+  resumeUrl: string;
+}
+
 export const MOCK_COMPANIES: Company[] = [
     { id: 'logo-tech-solutions', name: 'Tech Solutions Inc.', description: 'A leading provider of innovative tech solutions.', website: 'https://techsolutions.example.com', logoId: 'logo-tech-solutions' },
     { id: 'logo-innovate-now', name: 'Innovate Now', description: 'Driving the future of creative design and product development.', website: 'https://innovatenow.example.com', logoId: 'logo-innovate-now' },
@@ -139,3 +150,12 @@ export const MOCK_HIRER_JOBS: HirerJob[] = MOCK_JOBS.slice(0,4).map((job, index)
     applicants: Math.floor(Math.random() * 30) + 5,
     status: index % 2 === 0 ? 'Open' : 'Closed',
 }));
+
+export const MOCK_APPLICANTS: Applicant[] = [
+    { id: 'seeker-1', name: 'Alice Johnson', email: 'alice@example.com', avatarId: 'user-avatar-1', jobId: '1', applicationDate: '2024-07-29T10:00:00Z', skills: ['React', 'TypeScript', 'Next.js'], resumeUrl: '#' },
+    { id: 'seeker-2', name: 'Bob Williams', email: 'bob@example.com', avatarId: 'user-avatar-2', jobId: '1', applicationDate: '2024-07-29T11:30:00Z', skills: ['React', 'JavaScript', 'Redux'], resumeUrl: '#' },
+    { id: 'seeker-3', name: 'Charlie Brown', email: 'charlie@example.com', avatarId: 'user-avatar-3', jobId: '1', applicationDate: '2024-07-30T09:00:00Z', skills: ['Vue', 'TypeScript', 'Node.js'], resumeUrl: '#' },
+    { id: 'seeker-4', name: 'Diana Prince', email: 'diana@example.com', avatarId: 'user-avatar-4', jobId: '2', applicationDate: '2024-07-28T15:00:00Z', skills: ['Figma', 'Sketch', 'User Research'], resumeUrl: '#' },
+    { id: 'seeker-5', name: 'Ethan Hunt', email: 'ethan@example.com', avatarId: 'user-avatar-5', jobId: '2', applicationDate: '2024-07-29T18:20:00Z', skills: ['Adobe XD', 'Prototyping', 'UI/UX'], resumeUrl: '#' },
+    { id: 'seeker-6', name: 'Fiona Glenanne', email: 'fiona@example.com', avatarId: 'user-avatar-6', jobId: '3', applicationDate: '2024-07-30T11:00:00Z', skills: ['Python', 'Pandas', 'scikit-learn'], resumeUrl: '#' },
+];
