@@ -93,7 +93,7 @@ export default function Header() {
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                    <Link href="#" className="w-full">Edit Profile</Link>
+                    <Link href="/profile/edit" className="w-full">Edit Profile</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                      <Link href="/dashboard" className="w-full">Dashboard</Link>
