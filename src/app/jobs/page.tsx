@@ -1,5 +1,6 @@
 import { MOCK_JOBS } from '@/lib/mock-data';
 import JobFilters from './job-filters';
+import { Sidebar } from '@/components/jobs/sidebar';
 
 export default function JobsPage() {
   return (
@@ -11,7 +12,10 @@ export default function JobsPage() {
             Browse through thousands of open positions or use our AI-powered tool to find the perfect match.
           </p>
         </header>
-        <JobFilters allJobs={MOCK_JOBS} />
+        <div className="flex flex-col md:flex-row gap-8">
+            <Sidebar />
+            <JobFilters allJobs={MOCK_JOBS} />
+        </div>
       </div>
     </div>
   );

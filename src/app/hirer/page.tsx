@@ -19,20 +19,17 @@ export default function HirerPage() {
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-primary-foreground/80 mb-8">
             Access a pool of talented professionals actively looking for their next opportunity. Posting a job on WorkWise is simple, fast, and effective.
           </p>
-           <div className="mt-8 max-w-4xl mx-auto">
+           <div className="mt-8 max-w-3xl mx-auto">
             <Card className="shadow-lg">
-              <CardContent className="p-4 flex flex-col md:flex-row gap-2 items-center">
+              <CardContent className="p-2 flex flex-col md:flex-row gap-0 items-center rounded-lg">
                 <div className="relative flex-1 w-full">
-                  <Input type="text" placeholder="Skills" className="pl-4 pr-4 py-3 text-base" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input type="text" placeholder="Search by skills, company, or candidate experience" className="pl-10 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
                 </div>
-                <div className="relative flex-1 w-full">
-                  <Input type="text" placeholder="Companies | Experience" className="pl-4 pr-4 py-3 text-base" />
+                 <div className="relative flex-grow w-full md:w-auto">
+                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base border-0 md:border-l rounded-none focus-visible:ring-0" />
                 </div>
-                <div className="relative flex-1 w-full">
-                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base" />
-                </div>
-                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Search className="h-5 w-5 mr-2" />
+                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90 m-2 md:m-0 rounded-md">
                   Search Candidates
                 </Button>
               </CardContent>
