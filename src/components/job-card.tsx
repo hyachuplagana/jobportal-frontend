@@ -19,22 +19,23 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
 
   if (view === 'list') {
     return (
-      <Card className="hover:shadow-lg transition-shadow duration-300 w-full flex flex-col sm:flex-row">
+      <Card className="hover:shadow-lg transition-shadow duration-300 w-full flex flex-col sm:flex-row group">
         <div className="p-6 flex items-center justify-center sm:border-r">
           {logo && (
-            <Image
-              src={logo.imageUrl}
-              alt={`${job.company} logo`}
-              width={80}
-              height={80}
-              className="rounded-lg object-contain"
-              data-ai-hint={logo.imageHint}
-            />
+            <div className="w-20 h-20 relative">
+              <Image
+                src={logo.imageUrl}
+                alt={`${job.company} logo`}
+                fill
+                className="rounded-lg object-contain"
+                data-ai-hint={logo.imageHint}
+              />
+            </div>
           )}
         </div>
         <div className="flex-grow">
           <CardHeader>
-            <CardTitle className="font-headline text-xl">{job.title}</CardTitle>
+            <CardTitle className="font-headline text-xl group-hover:text-primary transition-colors">{job.title}</CardTitle>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Building className="h-4 w-4" />
               <span>{job.company}</span>
@@ -59,7 +60,7 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
               <span>{timeAgo}</span>
             </div>
           </div>
-          <Button asChild className="mt-4 w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
+          <Button asChild className="mt-4 w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
             <Link href={`/jobs/${job.id}/apply`}>Apply</Link>
           </Button>
         </div>
@@ -68,22 +69,21 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
   }
 
   return (
-    <Card className="flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+    <Card className="flex flex-col h-full hover:shadow-xl transition-shadow duration-300 group">
       <CardHeader className="flex-row gap-4 items-start">
         {logo && (
-          <div className="w-16 h-16 flex-shrink-0">
+          <div className="w-16 h-16 relative flex-shrink-0">
              <Image
               src={logo.imageUrl}
               alt={`${job.company} logo`}
-              width={64}
-              height={64}
+              fill
               className="rounded-lg object-contain"
               data-ai-hint={logo.imageHint}
             />
           </div>
         )}
         <div className="flex-grow">
-          <CardTitle className="font-headline text-xl mb-1">{job.title}</CardTitle>
+          <CardTitle className="font-headline text-xl mb-1 group-hover:text-primary transition-colors">{job.title}</CardTitle>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Building className="h-4 w-4" />
             <span>{job.company}</span>
@@ -99,16 +99,14 @@ export default function JobCard({ job, view = 'grid' }: JobCardProps) {
           <DollarSign className="h-4 w-4" />
           <span>{job.salary}</span>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between items-end">
-        <div className="flex flex-col gap-2">
-          <Badge variant="secondary">{job.type}</Badge>
-          <div className="flex items-center text-xs text-muted-foreground gap-1">
-            <Clock className="h-3 w-3" />
-            <span>{timeAgo}</span>
-          </div>
+         <div className="flex items-center gap-2 text-muted-foreground pt-2">
+          <Clock className="h-4 w-4" />
+          <span>{timeAgo}</span>
         </div>
-        <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+      </CardContent>
+      <CardFooter className="flex justify-between items-end pt-4">
+        <Badge variant="secondary">{job.type}</Badge>
+        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
           <Link href={`/jobs/${job.id}/apply`}>Apply Now</Link>
         </Button>
       </CardFooter>

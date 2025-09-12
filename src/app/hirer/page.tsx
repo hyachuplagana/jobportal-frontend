@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Target, Zap, Search } from 'lucide-react';
+import { CheckCircle, Target, Zap, Search, ArrowRight } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '@/components/ui/input';
 
@@ -11,38 +11,35 @@ export default function HirerPage() {
 
   return (
     <div className="flex flex-col items-center">
-      <section className="w-full py-20 lg:py-32 gradient-hero text-primary-foreground">
+      <section className="w-full pt-20 pb-24 md:pt-32 md:pb-40 gradient-hero text-foreground">
         <div className="container mx-auto max-w-7xl px-4 md:px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-4">
             Find Your Next Great Hire
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-primary-foreground/80 mb-8">
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-8">
             Access a pool of talented professionals actively looking for their next opportunity. Posting a job on WorkWise is simple, fast, and effective.
           </p>
-           <div className="mt-8 max-w-4xl mx-auto">
-            <Card className="shadow-lg">
-              <CardContent className="p-2 flex flex-col md:flex-row gap-0 items-center rounded-lg">
+           <div className="mt-8 max-w-3xl mx-auto">
+            <Card className="shadow-lg rounded-full border-2 border-transparent focus-within:border-primary transition-all">
+              <CardContent className="p-2 flex flex-col md:flex-row gap-0 items-center rounded-full bg-card">
                 <div className="relative flex-1 w-full">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input type="text" placeholder="Skills or company" className="pl-10 pr-4 py-3 text-base border-0 focus-visible:ring-0 rounded-t-lg md:rounded-l-lg md:rounded-tr-none" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input type="text" placeholder="Search by skill or keyword" className="pl-11 pr-4 py-3 h-12 text-base border-0 focus-visible:ring-0 rounded-full bg-transparent" />
                 </div>
-                 <div className="relative flex-grow w-full md:w-auto border-t md:border-t-0 md:border-l">
-                  <Input type="text" placeholder="Experience" className="pl-4 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
+                <div className="relative flex-grow w-full md:w-auto md:border-l">
+                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 h-12 text-base border-0 focus-visible:ring-0 rounded-full bg-transparent" />
                 </div>
-                <div className="relative flex-grow w-full md:w-auto border-t md:border-t-0 md:border-l">
-                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
-                </div>
-                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90 m-2 md:m-0 md:ml-2 rounded-md">
+                <Button size="lg" className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/90 m-1.5 rounded-full text-base h-auto">
                   Search Candidates
                 </Button>
               </CardContent>
             </Card>
           </div>
           <div className="flex justify-center gap-4 mt-8">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform transform hover:scale-105">
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform transform hover:scale-105">
               <Link href="/dashboard">Post a Job</Link>
             </Button>
-             <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/50 hover:bg-primary-foreground/10 transition-transform transform hover:scale-105">
+             <Button asChild size="lg" variant="outline" className="transition-transform transform hover:scale-105">
               <Link href="/">I'm a Job Seeker</Link>
             </Button>
           </div>
@@ -55,11 +52,11 @@ export default function HirerPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             <Card className="border-0 shadow-none bg-transparent">
               <CardHeader className="flex-row items-start gap-4">
-                <div className="bg-accent text-accent-foreground rounded-full p-3 flex-shrink-0">
+                <div className="bg-primary/10 text-primary rounded-full p-4 flex-shrink-0">
                     <Target className="h-6 w-6" />
                 </div>
                 <div>
-                  <CardTitle className="font-headline mb-2">Reach Qualified Candidates</CardTitle>
+                  <CardTitle className="font-headline mb-2 text-xl">Reach Qualified Candidates</CardTitle>
                   <CardContent className="p-0 text-muted-foreground">
                     Our platform is built for professionals. Connect with candidates who have the skills and experience you need.
                   </CardContent>
@@ -68,11 +65,11 @@ export default function HirerPage() {
             </Card>
             <Card className="border-0 shadow-none bg-transparent">
               <CardHeader className="flex-row items-start gap-4">
-                <div className="bg-accent text-accent-foreground rounded-full p-3 flex-shrink-0">
+                 <div className="bg-primary/10 text-primary rounded-full p-4 flex-shrink-0">
                     <Zap className="h-6 w-6" />
                 </div>
                 <div>
-                  <CardTitle className="font-headline mb-2">Post Jobs in Minutes</CardTitle>
+                  <CardTitle className="font-headline mb-2 text-xl">Post Jobs in Minutes</CardTitle>
                   <CardContent className="p-0 text-muted-foreground">
                     Our intuitive dashboard makes it simple to create, edit, and manage your job postings.
                   </CardContent>
@@ -81,11 +78,11 @@ export default function HirerPage() {
             </Card>
             <Card className="border-0 shadow-none bg-transparent">
               <CardHeader className="flex-row items-start gap-4">
-                <div className="bg-accent text-accent-foreground rounded-full p-3 flex-shrink-0">
+                <div className="bg-primary/10 text-primary rounded-full p-4 flex-shrink-0">
                     <CheckCircle className="h-6 w-6" />
                 </div>
                 <div>
-                  <CardTitle className="font-headline mb-2">Manage Applicants Easily</CardTitle>
+                  <CardTitle className="font-headline mb-2 text-xl">Manage Applicants Easily</CardTitle>
                   <CardContent className="p-0 text-muted-foreground">
                     Track applicants, review CVs, and manage your hiring pipeline all in one place.
                   </CardContent>
@@ -102,11 +99,11 @@ export default function HirerPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <h2 className="text-3xl font-bold font-headline mb-4">Ready to get started?</h2>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 text-lg">
                   Join hundreds of companies finding their best talent on WorkWise. Create your account today and post your first job for free.
                 </p>
-                <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="/dashboard">Go to Hirer Dashboard</Link>
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="/dashboard">Go to Hirer Dashboard <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
               </div>
               <div className="order-1 md:order-2">

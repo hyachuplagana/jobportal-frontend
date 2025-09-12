@@ -29,13 +29,13 @@ export default function Header() {
   const userImage = PlaceHolderImages.find((img) => img.id === 'user-avatar');
 
   return (
-    <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-40 w-full border-b">
-      <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+    <header className="bg-background/80 backdrop-blur-lg sticky top-0 z-40 w-full border-b">
+      <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-bold font-headline text-lg">
           <Briefcase className="h-6 w-6 text-primary" />
           <span>WorkWise</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
@@ -74,12 +74,12 @@ export default function Header() {
             {!loading && user && userImage && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                     <Image
                       src={userImage.imageUrl}
                       alt="User avatar"
-                      width={32}
-                      height={32}
+                      width={40}
+                      height={40}
                       className="rounded-full"
                       data-ai-hint={userImage.imageHint}
                     />
