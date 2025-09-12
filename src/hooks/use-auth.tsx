@@ -29,12 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
        // To test the seeker dashboard, change role to 'seeker'
        // To test the hirer dashboard, change role to 'hirer'
        // To test the logged-out state, set this to null
-      setUser({
-        id: '1',
-        name: 'Alex Doe',
-        email: 'alex.doe@example.com',
-        role: 'hirer', 
-      });
+      setUser(null);
       setLoading(false);
     }, 1500);
 

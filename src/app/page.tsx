@@ -23,17 +23,20 @@ export default function Home() {
             WorkWise connects you with top companies and exciting opportunities.
             Your next career move is just a click away.
           </p>
-          <div className="mt-8 max-w-3xl mx-auto">
+          <div className="mt-8 max-w-4xl mx-auto">
             <Card className="shadow-lg">
               <CardContent className="p-2 flex flex-col md:flex-row gap-0 items-center rounded-lg">
                 <div className="relative flex-1 w-full">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input type="text" placeholder="Search by skills, company, or job title" className="pl-10 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
+                  <Input type="text" placeholder="Skills or company" className="pl-10 pr-4 py-3 text-base border-0 focus-visible:ring-0 rounded-t-lg md:rounded-l-lg md:rounded-tr-none" />
                 </div>
-                 <div className="relative flex-grow w-full md:w-auto">
-                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base border-0 md:border-l rounded-none focus-visible:ring-0" />
+                 <div className="relative flex-grow w-full md:w-auto border-t md:border-t-0 md:border-l">
+                  <Input type="text" placeholder="Experience" className="pl-4 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
                 </div>
-                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90 m-2 md:m-0 rounded-md">
+                 <div className="relative flex-grow w-full md:w-auto border-t md:border-t-0 md:border-l">
+                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 text-base border-0 focus-visible:ring-0" />
+                </div>
+                <Button size="lg" className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90 m-2 md:m-0 rounded-md md:ml-2">
                   Search
                 </Button>
               </CardContent>
