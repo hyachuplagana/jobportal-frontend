@@ -26,7 +26,7 @@ export default function HirerPage() {
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-8">
             Access a pool of talented professionals actively looking for their next opportunity. Posting a job on WorkWise is simple, fast, and effective.
           </p>
-           <div className="mt-8 max-w-4xl mx-auto">
+           <div className="mt-8 max-w-3xl mx-auto">
              <Card className="shadow-lg rounded-full border-2 border-border focus-within:border-primary transition-all">
               <CardContent className="p-1.5 flex flex-col md:flex-row gap-0 items-center rounded-full bg-card">
                 <div className="relative flex-1 w-full">
@@ -35,7 +35,7 @@ export default function HirerPage() {
                 </div>
                 <div className="relative flex-grow w-full md:w-auto md:border-l">
                    <Select>
-                    <SelectTrigger className="w-full md:w-[250px] h-14 text-base border-0 focus:ring-0 rounded-none bg-transparent">
+                    <SelectTrigger className="w-full md:w-[200px] h-14 text-base border-0 focus:ring-0 rounded-none bg-transparent">
                       <SelectValue placeholder="Select experience" />
                     </SelectTrigger>
                     <SelectContent>
@@ -48,7 +48,7 @@ export default function HirerPage() {
                   </Select>
                 </div>
                 <div className="relative flex-grow w-full md:w-auto md:border-l">
-                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 h-14 text-base border-0 focus-visible:ring-0 rounded-none bg-transparent" />
+                  <Input type="text" placeholder="Location" className="pl-4 pr-4 py-3 h-14 text-base border-0 focus-visible:ring-0 rounded-none bg-transparent md:w-[200px]" />
                 </div>
                 <Button size="lg" className="w-full md:w-auto bg-primary text-primary-foreground hover:bg-primary/90 m-1 rounded-full text-base h-12 px-10">
                   Search Candidates
