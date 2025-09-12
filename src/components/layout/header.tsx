@@ -1,10 +1,11 @@
+
 'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Briefcase, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, Briefcase, ChevronDown, ArrowRight, User as UserIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
@@ -48,7 +49,7 @@ export default function Header() {
                 )}
               >
                 {label}
-                {label !== 'Jobs' && <ChevronDown className="h-4 w-4" />}
+                 {label !== 'Jobs' && <ChevronDown className="h-4 w-4" />}
               </Link>
             ))}
           </nav>
@@ -56,7 +57,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-2">
             {!loading && !user && (
               <>
-                <Button variant="outline" asChild>
+                <Button variant="ghost" asChild>
                     <Link href="#">Login</Link>
                 </Button>
                 <Button asChild>
@@ -92,15 +93,18 @@ export default function Header() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/profile/edit" className="w-full">Edit Profile</Link>
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile">
+                        <UserIcon className="mr-2 h-4 w-4" />
+                        <span>My Profile</span>
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
-                     <Link href="/dashboard" className="w-full">Dashboard</Link>
+                  <DropdownMenuItem asChild>
+                     <Link href="/dashboard">Dashboard</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                     <Link href="#" className="w-full">Log out</Link>
+                     <Link href="#">Log out</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

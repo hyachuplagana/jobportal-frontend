@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useAuth } from '@/hooks/use-auth';
@@ -5,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import HirerProfileForm from './hirer-profile-form';
 import SeekerProfileForm from './seeker-profile-form';
+import { ArrowLeft } from 'lucide-react';
 
 export default function EditProfilePage() {
   const { user, loading } = useAuth();
@@ -37,6 +39,9 @@ export default function EditProfilePage() {
   return (
     <div className="bg-background min-h-full py-12 md:py-20">
       <div className="container mx-auto max-w-3xl px-4 md:px-6">
+        <Button variant="ghost" asChild className="mb-4">
+          <Link href="/profile"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Profile</Link>
+        </Button>
         <header className="mb-8">
           <h1 className="text-4xl font-bold font-headline">Edit Profile</h1>
           <p className="text-muted-foreground mt-2">
