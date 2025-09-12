@@ -13,6 +13,12 @@
       "imageHint": "job interview"
     },
     {
+      "id": "user-avatar",
+      "description": "A placeholder avatar for a user.",
+      "imageUrl": "https://picsum.photos/seed/99/100/100",
+      "imageHint": "person avatar"
+    },
+    {
       "id": "logo-tech-solutions",
       "description": "Logo for Tech Solutions Inc.",
       "imageUrl": "https://picsum.photos/seed/101/100/100",
