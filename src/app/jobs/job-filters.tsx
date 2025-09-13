@@ -2,18 +2,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/form';
 import { List, LayoutGrid } from 'lucide-react';
 import {
   Select,
@@ -25,12 +14,6 @@ import {
 import JobCard from '@/components/job-card';
 import type { Job } from '@/lib/mock-data';
 
-const formSchema = z.object({
-  userDescription: z
-    .string()
-    .min(10, 'Please describe your desired job in at least 10 characters.'),
-});
-
 type JobFiltersProps = {
   allJobs: Job[];
 };
@@ -39,13 +22,6 @@ export default function JobFilters({ allJobs }: JobFiltersProps) {
   const [activeFilters] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState('newest');
   const [view, setView] = useState<'grid' | 'list'>('grid');
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      userDescription: '',
-    },
-  });
 
   const filteredAndSortedJobs = useMemo(() => {
     let jobs = [...allJobs];
