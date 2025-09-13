@@ -16,10 +16,15 @@ import type { Job } from '@/lib/mock-data';
 
 type JobFiltersProps = {
   allJobs: Job[];
+  initialCategory?: string;
 };
 
-export default function JobFilters({ allJobs }: JobFiltersProps) {
-  const [activeFilters] = useState<string[]>([]);
+// In a real app, categories might come from an API
+const jobCategories = ['Technology', 'Sales & Marketing', 'Finance', 'Healthcare', 'Engineering', 'Human Resources', 'Design', 'Customer Service'];
+
+
+export default function JobFilters({ allJobs, initialCategory }: JobFiltersProps) {
+  const [activeFilters] = useState<string[]>(initialCategory ? [initialCategory] : []);
   const [sortBy, setSortBy] = useState('newest');
   const [view, setView] = useState<'grid' | 'list'>('grid');
 
@@ -31,7 +36,9 @@ export default function JobFilters({ allJobs }: JobFiltersProps) {
         activeFilters.some(
           (filter) =>
             job.title.toLowerCase().includes(filter.toLowerCase()) ||
-            job.description.toLowerCase().includes(filter.toLowerCase())
+            job.description.toLowerCase().includes(filter.toLowerCase()) ||
+            // A real app would have a category field on the job object
+            job.company.toLowerCase().includes(filter.toLowerCase())
         )
       );
     }
@@ -99,6 +106,11 @@ export default function JobFilters({ allJobs }: JobFiltersProps) {
         {filteredAndSortedJobs.map((job) => (
           <JobCard key={job.id} job={job} view={view} />
         ))}
+         {filteredAndSortedJobs.length === 0 && (
+            <div className="text-center py-10 text-muted-foreground col-span-full">
+                No jobs found matching your criteria.
+            </div>
+        )}
       </div>
     </div>
   );

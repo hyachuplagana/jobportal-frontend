@@ -27,6 +27,7 @@ export default function Home() {
   const recentJobs = [...MOCK_JOBS].sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime());
   const popularJobs = [...MOCK_JOBS].sort(() => Math.random() - 0.5); // Random sort for "popular" demo
   const companyLogos = PlaceHolderImages.filter(p => p.id.startsWith('logo-'));
+  const jobCategories = ['Technology', 'Sales & Marketing', 'Finance', 'Healthcare', 'Engineering', 'Human Resources', 'Design', 'Customer Service'];
 
   return (
     <div className="flex flex-col items-center bg-secondary/50">
@@ -128,8 +129,8 @@ export default function Home() {
             </Button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {['Tech & IT', 'Sales & Marketing', 'Finance', 'Healthcare', 'Engineering', 'Human Resources', 'Design', 'Customer Service'].map(category => (
-               <Link href="#" key={category} className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 hover:shadow-md transition-all">
+            {jobCategories.map(category => (
+               <Link href={`/jobs?category=${encodeURIComponent(category)}`} key={category} className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 hover:shadow-md transition-all">
                   <span className="font-semibold">{category}</span>
                   <ChevronDown className="h-5 w-5 -rotate-90 text-muted-foreground" />
                </Link>
