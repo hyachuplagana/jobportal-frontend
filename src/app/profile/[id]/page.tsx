@@ -7,22 +7,26 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Edit, Mail, Briefcase, Building, Link as LinkIcon, FileText } from 'lucide-react';
+import { Edit, Mail, Briefcase, Building, Link as LinkIcon, FileText, Github, Linkedin, Dribbble, Calendar, GraduationCap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useParams } from 'next/navigation';
+import { MOCK_USER_PROFILES, UserProfile } from '@/lib/mock-data';
+
+const PortfolioIcon = ({ url }: { url: string }) => {
+    if (url.includes('github')) return <Github className="h-5 w-5" />;
+    if (url.includes('linkedin')) return <Linkedin className="h-5 w-5" />;
+    if (url.includes('dribbble')) return <Dribbble className="h-5 w-5" />;
+    return <LinkIcon className="h-5 w-5" />;
+}
+
 
 export default function OthersProfilePage() {
-  const { user, loading } = useAuth();
+  const { user: loggedInUser, loading } = useAuth();
   const params = useParams();
   const userImage = PlaceHolderImages.find((img) => img.id === 'user-avatar');
 
   // In a real app, you would fetch this user's data based on params.id
-  const viewedUser = {
-      id: params.id,
-      name: 'Recruiter Roxy',
-      email: 'roxy@example.com',
-      role: 'hirer' as 'hirer' | 'seeker',
-  }
+  const viewedUser: UserProfile | undefined = MOCK_USER_PROFILES.find(p => p.id === params.id);
 
   if (loading) {
     return (
@@ -30,6 +34,14 @@ export default function OthersProfilePage() {
         <p>Loading...</p>
       </div>
     );
+  }
+  
+  if (!viewedUser) {
+    return (
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 py-8 text-center">
+            <h1 className="text-3xl font-bold">User not found</h1>
+        </div>
+    )
   }
 
   return (
@@ -45,11 +57,11 @@ export default function OthersProfilePage() {
                     <div className="flex justify-between items-start">
                         <div>
                             <CardTitle className="text-3xl font-bold">{viewedUser.name}</CardTitle>
-                            <CardDescription className="text-lg text-muted-foreground">
-                                {viewedUser.role === 'seeker' ? 'Senior Frontend Developer at Tech Solutions Inc.' : 'Hiring Manager at My Company'}
+                            <CardDescription className="text-lg text-muted-foreground mt-1">
+                                {viewedUser.headline}
                             </CardDescription>
                         </div>
-                         {user?.id === viewedUser.id && (
+                         {loggedInUser?.id === viewedUser.id && (
                             <Button asChild variant="outline">
                                 <Link href="/profile/edit"><Edit className="mr-2 h-4 w-4" /> Edit Profile</Link>
                             </Button>
@@ -68,19 +80,70 @@ export default function OthersProfilePage() {
                 </div>
             </CardHeader>
             <CardContent>
-                {viewedUser.role === 'seeker' ? (
-                   <div className="mt-6 border-t pt-6">
-                        <h3 className="text-xl font-semibold mb-4">Skills</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {['React', 'TypeScript', 'Node.js', 'Next.js', 'Tailwind CSS'].map(skill => (
-                                <Badge key={skill} variant="secondary" className="text-base px-4 py-1">{skill}</Badge>
-                            ))}
-                        </div>
-                         <h3 className="text-xl font-semibold mt-8 mb-4">Resume</h3>
-                         <div className="flex items-center gap-3 text-primary hover:underline">
-                            <FileText className="h-5 w-5" />
-                            <Link href="#" target="_blank">View Resume</Link>
-                         </div>
+                {viewedUser.role === 'seeker' && viewedUser.workHistory ? (
+                   <div className="grid md:grid-cols-3 gap-8">
+                       <div className="md:col-span-2">
+                            <div className="mt-6 border-t pt-6">
+                                <h3 className="text-xl font-semibold mb-6">Work Experience</h3>
+                                <div className="relative">
+                                    <div className="absolute left-3.5 top-4 h-full border-l-2 border-border"></div>
+                                    {viewedUser.workHistory.map((job, index) => (
+                                        <div key={index} className="mb-8 pl-12 relative">
+                                            <div className="absolute -left-0.5 top-1.5 flex items-center justify-center bg-primary rounded-full h-8 w-8 text-primary-foreground">
+                                                <Briefcase className="h-4 w-4" />
+                                            </div>
+                                            <p className="font-semibold text-card-foreground">{job.title}</p>
+                                            <p className="text-sm text-muted-foreground">{job.company}</p>
+                                            <p className="text-xs text-muted-foreground mt-1 flex items-center gap-2">
+                                                <Calendar className="h-3 w-3"/>{job.startDate} - {job.endDate}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                             <div className="mt-6 border-t pt-6">
+                                <h3 className="text-xl font-semibold mb-6">Education</h3>
+                                <div className="relative">
+                                     <div className="absolute left-3.5 top-4 h-full border-l-2 border-border"></div>
+                                     <div className="mb-8 pl-12 relative">
+                                         <div className="absolute -left-0.5 top-1.5 flex items-center justify-center bg-primary rounded-full h-8 w-8 text-primary-foreground">
+                                            <GraduationCap className="h-4 w-4" />
+                                        </div>
+                                        <p className="font-semibold text-card-foreground">B.Sc. in Computer Science</p>
+                                        <p className="text-sm text-muted-foreground">University of Technology</p>
+                                        <p className="text-xs text-muted-foreground mt-1 flex items-center gap-2">
+                                            <Calendar className="h-3 w-3"/> 2016 - 2020
+                                        </p>
+                                     </div>
+                                </div>
+                            </div>
+                       </div>
+                       
+                       <div className="md:col-span-1">
+                            <div className="mt-6 border-t md:border-t-0 md:pt-0 md:border-l md:pl-6">
+                                <h3 className="text-xl font-semibold mb-4">Skills</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {viewedUser.skills?.map(skill => (
+                                        <Badge key={skill} variant="secondary" className="text-base px-3 py-1">{skill}</Badge>
+                                    ))}
+                                </div>
+                                <h3 className="text-xl font-semibold mt-8 mb-4">Portfolio</h3>
+                                <div className="space-y-3">
+                                    {viewedUser.portfolio?.map(item => (
+                                        <a href={item.url} key={item.name} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-primary hover:underline">
+                                            <PortfolioIcon url={item.url} />
+                                            <span>{item.name}</span>
+                                        </a>
+                                    ))}
+                                </div>
+                                 <h3 className="text-xl font-semibold mt-8 mb-4">Resume</h3>
+                                 <div className="flex items-center gap-3 text-primary hover:underline">
+                                    <FileText className="h-5 w-5" />
+                                    <Link href="#" target="_blank">View Resume</Link>
+                                 </div>
+                            </div>
+                       </div>
                    </div>
                 ) : (
                     <div className="mt-6 border-t pt-6">

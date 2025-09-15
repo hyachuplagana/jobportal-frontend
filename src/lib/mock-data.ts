@@ -1,3 +1,4 @@
+
 import { PlaceHolderImages } from './placeholder-images';
 
 export type Job = {
@@ -31,6 +32,59 @@ export type Applicant = {
   skills: string[];
   resumeUrl: string;
 }
+
+export type WorkExperience = {
+    title: string;
+    company: string;
+    startDate: string;
+    endDate: string;
+}
+
+export type PortfolioItem = {
+    name: string;
+    url: string;
+}
+
+export type UserProfile = {
+    id: string;
+    name: string;
+    email: string;
+    role: 'seeker' | 'hirer';
+    headline: string;
+    skills?: string[];
+    workHistory?: WorkExperience[];
+    portfolio?: PortfolioItem[];
+    resumeUrl?: string;
+}
+
+export const MOCK_USER_PROFILES: UserProfile[] = [
+    {
+        id: '1',
+        name: 'Recruiter Roxy',
+        email: 'roxy@example.com',
+        role: 'hirer',
+        headline: 'Hiring Manager at My Company'
+    },
+    {
+        id: 'user-seeker-1',
+        name: 'Alice Johnson',
+        email: 'alice@example.com',
+        role: 'seeker',
+        headline: 'Senior Frontend Developer at Tech Solutions Inc.',
+        skills: ['React', 'TypeScript', 'Next.js', 'GraphQL', 'Tailwind CSS'],
+        workHistory: [
+            { title: 'Senior Frontend Developer', company: 'Tech Solutions Inc.', startDate: 'Jan 2022', endDate: 'Present' },
+            { title: 'Frontend Developer', company: 'Innovate Now', startDate: 'Jun 2019', endDate: 'Dec 2021' },
+            { title: 'Junior Web Developer', company: 'DataCorp', startDate: 'May 2018', endDate: 'May 2019' },
+        ],
+        portfolio: [
+            { name: 'GitHub Profile', url: 'https://github.com/example' },
+            { name: 'Personal Website', url: 'https://alice.dev' }
+        ],
+        resumeUrl: '#'
+    }
+]
+
 
 export const MOCK_COMPANIES: Company[] = [
     { id: 'logo-tech-solutions', name: 'Tech Solutions Inc.', description: 'A leading provider of innovative tech solutions.', website: 'https://techsolutions.example.com', logoId: 'logo-tech-solutions' },

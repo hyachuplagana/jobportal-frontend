@@ -14,34 +14,18 @@ import {
 import JobCard from '@/components/job-card';
 import type { Job } from '@/lib/mock-data';
 
-type JobFiltersProps = {
+type JobFiltersDisplayProps = {
   allJobs: Job[];
-  initialCategory?: string;
+  initialJobs: Job[];
 };
 
-// In a real app, categories might come from an API
-const jobCategories = ['Technology', 'Sales & Marketing', 'Finance', 'Healthcare', 'Engineering', 'Human Resources', 'Design', 'Customer Service'];
 
-
-export default function JobFilters({ allJobs, initialCategory }: JobFiltersProps) {
-  const [activeFilters] = useState<string[]>(initialCategory ? [initialCategory] : []);
+export default function JobFiltersDisplay({ allJobs, initialJobs }: JobFiltersDisplayProps) {
   const [sortBy, setSortBy] = useState('newest');
   const [view, setView] = useState<'grid' | 'list'>('grid');
 
-  const filteredAndSortedJobs = useMemo(() => {
+  const sortedJobs = useMemo(() => {
     let jobs = [...allJobs];
-
-    if (activeFilters.length > 0) {
-      jobs = jobs.filter((job) =>
-        activeFilters.some(
-          (filter) =>
-            job.title.toLowerCase().includes(filter.toLowerCase()) ||
-            job.description.toLowerCase().includes(filter.toLowerCase()) ||
-            // A real app would have a category field on the job object
-            job.company.toLowerCase().includes(filter.toLowerCase())
-        )
-      );
-    }
 
     jobs.sort((a, b) => {
       switch (sortBy) {
@@ -59,13 +43,13 @@ export default function JobFilters({ allJobs, initialCategory }: JobFiltersProps
     });
 
     return jobs;
-  }, [allJobs, activeFilters, sortBy]);
+  }, [allJobs, sortBy]);
 
   return (
     <div className="flex-1">
       <div className="flex justify-between items-center mb-6">
         <div className="text-sm text-muted-foreground">
-          Showing {filteredAndSortedJobs.length} of {allJobs.length} jobs
+          Showing {sortedJobs.length} of {initialJobs.length} jobs
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
@@ -103,10 +87,10 @@ export default function JobFilters({ allJobs, initialCategory }: JobFiltersProps
             : 'space-y-4'
         }
       >
-        {filteredAndSortedJobs.map((job) => (
+        {sortedJobs.map((job) => (
           <JobCard key={job.id} job={job} view={view} />
         ))}
-         {filteredAndSortedJobs.length === 0 && (
+         {sortedJobs.length === 0 && (
             <div className="text-center py-10 text-muted-foreground col-span-full">
                 No jobs found matching your criteria.
             </div>
