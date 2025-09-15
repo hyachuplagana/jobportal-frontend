@@ -31,6 +31,8 @@ export default function Header() {
   const { user, loading } = useAuth();
   const userImage = PlaceHolderImages.find((img) => img.id === 'user-avatar');
 
+  const showThemeToggle = pathname !== '/login' && pathname !== '/signup';
+
   return (
     <header className="bg-background/80 backdrop-blur-lg sticky top-0 z-40 w-full border-b">
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
@@ -110,10 +112,10 @@ export default function Header() {
              <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 hidden md:inline-flex">
                 <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
-            <ThemeToggle />
+            {showThemeToggle && <ThemeToggle />}
         </div>
         <div className="md:hidden flex items-center">
-          <ThemeToggle />
+          {showThemeToggle && <ThemeToggle />}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
