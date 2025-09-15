@@ -143,7 +143,7 @@ export default function ApplyPage() {
             </nav>
             
             {user && user.role === 'seeker' && currentStep === 0 && (
-                <div className="mb-6 text-center">
+                <div className="mb-6 text-center border-t pt-6">
                     <p className="text-muted-foreground mb-4">You are logged in. Want to apply with your profile?</p>
                     <Button onClick={applyWithProfile}><UserCheck className="mr-2 h-4 w-4" /> Apply with Profile</Button>
                 </div>

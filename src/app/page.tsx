@@ -42,7 +42,7 @@ export default function Home() {
           <div className="mt-8 max-w-4xl mx-auto">
             <Card className="shadow-lg rounded-full border-2 border-border focus-within:border-primary transition-all">
               <CardContent className="p-2 flex flex-col md:flex-row gap-0 items-center rounded-full bg-card">
-                <div className="relative flex-grow-[2] w-full">
+                <div className="relative flex-grow-[3] w-full">
                   <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input type="text" placeholder="Skills, designations, companies" className="pl-14 pr-4 py-3 h-16 text-base border-0 focus-visible:ring-0 rounded-l-full bg-transparent" />
                 </div>

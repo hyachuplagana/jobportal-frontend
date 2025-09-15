@@ -86,7 +86,7 @@ export function Sidebar({ filters, setFilters, onClearFilters }: SidebarProps) {
   };
 
   return (
-    <Card className="w-full md:w-80 h-fit self-start sticky top-24">
+    <Card className="w-full h-fit self-start sticky top-24">
       <CardContent className="p-4 space-y-6">
         <div>
           <Label htmlFor="keywords" className="font-semibold">
@@ -101,7 +101,7 @@ export function Sidebar({ filters, setFilters, onClearFilters }: SidebarProps) {
           <Input id="location" placeholder="e.g., 'San Francisco, CA'" value={filters.location} onChange={handleInputChange} />
         </div>
 
-        <Accordion type="multiple" defaultValue={['salary', 'job-type']}>
+        <Accordion type="multiple" defaultValue={['salary', 'job-type']} className="w-full">
           <AccordionItem value="salary">
             <AccordionTrigger className="font-semibold">
               Salary Range
@@ -121,6 +121,7 @@ export function Sidebar({ filters, setFilters, onClearFilters }: SidebarProps) {
                 onValueChange={(value) => setFilters(prev => ({ ...prev, salary: value }))}
                 max={200000}
                 step={1000}
+                min={0}
               />
               <div className="flex justify-between items-center text-sm">
                 <span>${filters.salary[0].toLocaleString()}</span>

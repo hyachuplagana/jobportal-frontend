@@ -57,57 +57,60 @@ export default function ApplicantsPage() {
                 />
               </div>
             </div>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Candidate</TableHead>
-                  <TableHead className="hidden md:table-cell">Applied</TableHead>
-                  <TableHead>Skills</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredApplicants.map((applicant) => {
-                  const avatar = PlaceHolderImages.find(p => p.id === applicant.avatarId);
-                  const timeAgo = formatDistanceToNow(new Date(applicant.applicationDate), { addSuffix: true });
-                  return (
-                    <TableRow key={applicant.id}>
-                      <TableCell>
-                        <div className="flex items-center gap-4">
-                          <Avatar>
-                            {avatar && <AvatarImage src={avatar.imageUrl} alt={applicant.name} />}
-                            <AvatarFallback>{applicant.name.charAt(0)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="font-medium">{applicant.name}</p>
-                            <p className="text-sm text-muted-foreground">{applicant.email}</p>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Candidate</TableHead>
+                    <TableHead className="hidden md:table-cell">Applied</TableHead>
+                    <TableHead>Skills</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredApplicants.map((applicant) => {
+                    const avatar = PlaceHolderImages.find(p => p.id === applicant.avatarId);
+                    const timeAgo = formatDistanceToNow(new Date(applicant.applicationDate), { addSuffix: true });
+                    return (
+                      <TableRow key={applicant.id}>
+                        <TableCell>
+                          <div className="flex items-center gap-4">
+                            <Avatar>
+                              {avatar && <AvatarImage src={avatar.imageUrl} alt={applicant.name} />}
+                              <AvatarFallback>{applicant.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <p className="font-medium">{applicant.name}</p>
+                              <p className="text-sm text-muted-foreground">{applicant.email}</p>
+                            </div>
                           </div>
-                        </div>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">{timeAgo}</TableCell>
-                      <TableCell>
-                        <div className="flex flex-wrap gap-1">
-                          {applicant.skills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={applicant.resumeUrl} target="_blank">
-                            <FileText className="mr-2 h-4 w-4" />
-                            View CV
-                          </Link>
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
-             {filteredApplicants.length === 0 && (
-                <div className="text-center py-10 text-muted-foreground">
-                    No applicants found matching your criteria.
-                </div>
-            )}
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">{timeAgo}</TableCell>
+                        <TableCell>
+                          <div className="flex flex-wrap gap-1">
+                            {applicant.skills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <Button variant="ghost" size="sm" asChild>
+                            <Link href={applicant.resumeUrl} target="_blank">
+                              <FileText className="mr-2 h-4 w-4" />
+                              View CV
+                            </Link>
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+               {filteredApplicants.length === 0 && (
+                  <caption className="text-center py-10 text-muted-foreground">
+                      No applicants found matching your criteria.
+                  </caption>
+              )}
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </div>

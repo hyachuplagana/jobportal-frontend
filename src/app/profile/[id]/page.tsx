@@ -54,7 +54,7 @@ export default function OthersProfilePage() {
                     <AvatarFallback>{viewedUser.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                         <div>
                             <CardTitle className="text-3xl font-bold">{viewedUser.name}</CardTitle>
                             <CardDescription className="text-lg text-muted-foreground mt-1">
@@ -67,7 +67,7 @@ export default function OthersProfilePage() {
                             </Button>
                         )}
                     </div>
-                     <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
+                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
                             <Mail className="h-4 w-4" /> {viewedUser.email}
                         </div>
@@ -121,7 +121,7 @@ export default function OthersProfilePage() {
                        </div>
                        
                        <div className="md:col-span-1">
-                            <div className="mt-6 border-t md:border-t-0 md:pt-0 md:border-l md:pl-6">
+                            <div className="mt-6 border-t pt-6 md:border-t-0 md:pt-0 md:border-l md:pl-6">
                                 <h3 className="text-xl font-semibold mb-4">Skills</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {viewedUser.skills?.map(skill => (

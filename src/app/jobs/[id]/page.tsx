@@ -29,8 +29,8 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
         <Button variant="ghost" asChild className="mb-4">
             <Link href="/jobs"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Jobs</Link>
         </Button>
-        <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
+        <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
                 <Card>
                     <CardHeader>
                         <CardTitle className="text-3xl font-bold">{job.title}</CardTitle>

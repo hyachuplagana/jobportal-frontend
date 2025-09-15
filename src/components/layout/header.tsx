@@ -63,12 +63,9 @@ export default function Header() {
                 <Button asChild>
                     <Link href="/signup">Register</Link>
                 </Button>
+                 <div className="h-8 w-px bg-border mx-2"></div>
               </>
             )}
-             <div className="h-8 w-px bg-border mx-2"></div>
-             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
-                <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
-            </Button>
             {!loading && user && userImage && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -109,6 +106,9 @@ export default function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
+             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
+                <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
         </div>
         <div className="md:hidden">
           <Sheet>
@@ -165,6 +165,9 @@ export default function Header() {
                         <Link href="/login">Log Out</Link>
                     </Button>
                    )}
+                   <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
+                      <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  </Button>
                 </div>
               </div>
             </SheetContent>

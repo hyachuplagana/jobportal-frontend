@@ -89,64 +89,66 @@ export default function HirerDashboard() {
             <CardDescription>View, edit, or delete your active and past job postings.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Job Title</TableHead>
-                  <TableHead className="hidden md:table-cell">Status</TableHead>
-                  <TableHead className="hidden md:table-cell">Applicants</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {jobs.map((job) => (
-                  <TableRow key={job.id}>
-                    <TableCell className="font-medium">{job.title}</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      <Badge variant={job.status === 'Open' ? 'default' : 'secondary'}>{job.status}</Badge>
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                       <Link href={`/dashboard/jobs/${job.id}`} className="flex items-center gap-2 text-primary hover:underline">
-                        <Users className="h-4 w-4" />
-                        {job.applicants}
-                      </Link>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
-                         <Button variant="ghost" size="icon" asChild>
-                           <Link href={`/jobs/${job.id}`} target="_blank">
-                              <ExternalLink className="h-4 w-4" />
-                              <span className="sr-only">View Job</span>
-                            </Link>
-                        </Button>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
-                              <Trash2 className="h-4 w-4" />
-                               <span className="sr-only">Delete</span>
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                This action cannot be undone. This will permanently delete the job posting for "{job.title}".
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
-                              <AlertDialogAction onClick={() => deleteJob(job.id)} className="bg-destructive hover:bg-destructive/90">
-                                Delete
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </div>
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Job Title</TableHead>
+                    <TableHead className="hidden md:table-cell">Status</TableHead>
+                    <TableHead className="hidden md:table-cell">Applicants</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {jobs.map((job) => (
+                    <TableRow key={job.id}>
+                      <TableCell className="font-medium">{job.title}</TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        <Badge variant={job.status === 'Open' ? 'default' : 'secondary'}>{job.status}</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                         <Link href={`/dashboard/jobs/${job.id}`} className="flex items-center gap-2 text-primary hover:underline">
+                          <Users className="h-4 w-4" />
+                          {job.applicants}
+                        </Link>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex justify-end gap-2">
+                           <Button variant="ghost" size="icon" asChild>
+                             <Link href={`/jobs/${job.id}`} target="_blank">
+                                <ExternalLink className="h-4 w-4" />
+                                <span className="sr-only">View Job</span>
+                              </Link>
+                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
+                                <Trash2 className="h-4 w-4" />
+                                 <span className="sr-only">Delete</span>
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  This action cannot be undone. This will permanently delete the job posting for "{job.title}".
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => deleteJob(job.id)} className="bg-destructive hover:bg-destructive/90">
+                                  Delete
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </TabsContent>

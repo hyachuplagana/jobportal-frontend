@@ -4,9 +4,13 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { MOCK_JOBS } from '@/lib/mock-data';
+import type { Job } from '@/lib/mock-data';
 import JobFiltersDisplay from './job-filters';
 import { Sidebar } from '@/components/jobs/sidebar';
 import type { Filters } from '@/components/jobs/sidebar';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Filter } from 'lucide-react';
 
 export default function JobsPage() {
   const searchParams = useSearchParams();
@@ -41,6 +45,13 @@ export default function JobsPage() {
     if (filters.location) {
         jobs = jobs.filter(job => job.location.toLowerCase().includes(filters.location.toLowerCase()));
     }
+     // Salary
+    jobs = jobs.filter(job => {
+        const jobSalary = parseInt(job.salary.replace(/[^0-9]/g, ''));
+        // This is a rough estimation, as salary is a range string
+        const salaryMin = jobSalary / 1.2; 
+        return salaryMin >= filters.salary[0] && salaryMin <= filters.salary[1];
+    });
     // Job Type
     if (filters.jobType.length > 0) {
         jobs = jobs.filter(job => filters.jobType.some(type => job.type.toLowerCase() === type.toLowerCase()));
@@ -70,7 +81,7 @@ export default function JobsPage() {
     setFilters({
       keywords: '',
       location: '',
-      salary: [50000, 150000],
+      salary: [0, 200000],
       jobType: [],
       experience: '',
       company: [],
@@ -89,12 +100,33 @@ export default function JobsPage() {
           </p>
         </header>
         <div className="flex flex-col md:flex-row gap-8">
-            <Sidebar 
-                filters={filters} 
-                setFilters={setFilters} 
-                onClearFilters={handleClearFilters}
-            />
-            <JobFiltersDisplay allJobs={filteredJobs} initialJobs={MOCK_JOBS} />
+            <aside className="hidden md:block w-full md:w-80 lg:w-96">
+                <Sidebar 
+                    filters={filters} 
+                    setFilters={setFilters} 
+                    onClearFilters={handleClearFilters}
+                />
+            </aside>
+            <main className="flex-1">
+                <div className="md:hidden mb-4">
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button variant="outline" className="w-full">
+                                <Filter className="mr-2 h-4 w-4" />
+                                Filters
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="left" className="p-0">
+                            <Sidebar 
+                                filters={filters} 
+                                setFilters={setFilters} 
+                                onClearFilters={handleClearFilters}
+                            />
+                        </SheetContent>
+                    </Sheet>
+                </div>
+                <JobFiltersDisplay allJobs={filteredJobs} initialJobs={MOCK_JOBS} />
+            </main>
         </div>
       </div>
     </div>

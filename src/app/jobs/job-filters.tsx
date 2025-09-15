@@ -47,12 +47,12 @@ export default function JobFiltersDisplay({ allJobs, initialJobs }: JobFiltersDi
 
   return (
     <div className="flex-1">
-      <div className="flex justify-between items-center mb-6">
-        <div className="text-sm text-muted-foreground">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <div className="text-sm text-muted-foreground w-full md:w-auto">
           Showing {sortedJobs.length} of {initialJobs.length} jobs
         </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4 w-full md:w-auto">
+          <div className="hidden md:flex items-center gap-2">
             <Button
               variant={view === 'grid' ? 'default' : 'ghost'}
               size="icon"
@@ -69,7 +69,7 @@ export default function JobFiltersDisplay({ allJobs, initialJobs }: JobFiltersDi
             </Button>
           </div>
           <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full md:w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
@@ -83,7 +83,7 @@ export default function JobFiltersDisplay({ allJobs, initialJobs }: JobFiltersDi
       <div
         className={
           view === 'grid'
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'
+            ? 'grid grid-cols-1 md:grid-cols-2 gap-6'
             : 'space-y-4'
         }
       >
