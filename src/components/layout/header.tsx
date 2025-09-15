@@ -55,7 +55,7 @@ export default function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
             {!loading && !user && (
               <>
                 <Button variant="ghost" asChild>
