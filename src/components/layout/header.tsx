@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/hooks/use-auth';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
   { href: '/jobs', label: 'Jobs' },
@@ -54,7 +55,7 @@ export default function Header() {
             ))}
           </nav>
         </div>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="flex items-center gap-2">
             {!loading && !user && (
               <>
                 <Button variant="ghost" asChild>
@@ -106,11 +107,13 @@ export default function Header() {
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
-             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5" asChild>
+             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 hidden md:inline-flex">
                 <Link href="/hirer">For Employers <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+            <ThemeToggle />
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
+          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
