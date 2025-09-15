@@ -61,7 +61,7 @@ export default function Header() {
                     <Link href="/login">Login</Link>
                 </Button>
                 <Button asChild>
-                    <Link href="/register">Register</Link>
+                    <Link href="/signup">Register</Link>
                 </Button>
               </>
             )}
@@ -103,8 +103,8 @@ export default function Header() {
                      <Link href="/dashboard">Dashboard</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                     <Link href="/logout">Log out</Link>
+                  <DropdownMenuItem asChild>
+                     <Link href="/login">Log out</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -156,13 +156,13 @@ export default function Header() {
                           <Link href="/login">Login</Link>
                       </Button>
                       <Button asChild>
-                          <Link href="/register">Register</Link>
+                          <Link href="/signup">Register</Link>
                       </Button>
                     </>
                   )}
                    {user && (
                       <Button variant="outline" asChild>
-                        <Link href="/logout">Log Out</Link>
+                        <Link href="/login">Log Out</Link>
                     </Button>
                    )}
                 </div>

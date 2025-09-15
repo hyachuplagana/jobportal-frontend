@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useAuth } from '@/hooks/use-auth';
@@ -25,7 +26,7 @@ export default function DashboardPage() {
                 Please log in to view your dashboard.
             </p>
             <Button asChild className="mt-6">
-                <Link href="#">Login</Link>
+                <Link href="/login">Login</Link>
             </Button>
         </div>
     )

@@ -27,7 +27,7 @@ export default function EditProfilePage() {
           Please log in to edit your profile.
         </p>
         <Button asChild className="mt-6">
-          <Link href="#">Login</Link>
+          <Link href="/login">Login</Link>
         </Button>
       </div>
     );
