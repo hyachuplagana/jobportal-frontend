@@ -4,13 +4,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { MOCK_JOBS } from '@/lib/mock-data';
-import type { Job } from '@/lib/mock-data';
-import JobFiltersDisplay from './job-filters-display';
+import JobFiltersDisplay from './job-filters';
 import { Sidebar } from '@/components/jobs/sidebar';
 import type { Filters } from '@/components/jobs/sidebar';
-
-const jobCategories = ['Technology', 'Sales & Marketing', 'Finance', 'Healthcare', 'Engineering', 'Human Resources', 'Design', 'Customer Service'];
-
 
 export default function JobsPage() {
   const searchParams = useSearchParams();
