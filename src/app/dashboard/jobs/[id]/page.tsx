@@ -109,7 +109,7 @@ export default function ApplicantsPage() {
                       No applicants found matching your criteria.
                   </caption>
               )}
-              </Table>
+              
             </div>
           </CardContent>
         </Card>
