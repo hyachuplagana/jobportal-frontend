@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Form,
   FormControl,
@@ -27,7 +26,7 @@ const formSchema = z.object({
   email: z.string().email(),
   headline: z.string().min(5, 'Headline should be at least 5 characters.'),
   skills: z.array(z.string()).min(1, 'At least one skill is required.'),
-  resume: z.instanceof(FileList).optional(),
+  resume: z.any().optional(),
 });
 
 type SeekerProfileFormProps = {

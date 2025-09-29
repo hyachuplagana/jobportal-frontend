@@ -23,7 +23,7 @@ const step1Schema = z.object({
 });
 
 const step2Schema = z.object({
-  cv: z.instanceof(FileList).refine((files) => files?.length === 1, 'CV is required.'),
+  cv: z.any().refine((files) => files?.length === 1, 'CV is required.'),
   coverLetter: z.string().optional(),
 });
 
