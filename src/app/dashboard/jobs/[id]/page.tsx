@@ -103,13 +103,13 @@ export default function ApplicantsPage() {
                     )
                   })}
                 </TableBody>
-              </Table>
                {filteredApplicants.length === 0 && (
-                  <caption className="text-center py-10 text-muted-foreground">
+                 <caption className="text-center py-10 text-muted-foreground">
                       No applicants found matching your criteria.
                   </caption>
               )}
               
+              </Table>
             </div>
           </CardContent>
         </Card>
